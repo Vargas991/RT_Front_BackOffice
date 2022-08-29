@@ -1,17 +1,24 @@
-#Project Template with Eslint and prettier config
+# React Project Template
 
-Install dependencies
+## Include ESlint, Prettier and Husky
 
-$yarn 
+This project has a basic ESlint, Prettirt and Husky setup,
+nicer and beefier plus it implements conventional commit.
 
-Please add the next code on settings.json of VS Code
+### Plugins VSCode
 
-{
-"editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-}
+For its correct implementation, the following extensions
+must be installed in VsCode.
+
+| Plugin   | VS Marketplace                                                                                          |
+| -------- | ------------------------------------------------------------------------------------------------------- |
+| Prettier | [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) |
+| ESlint   | [VS Code ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)  |
+
+### Clone and install dependencies project
+
+```sh
+git clone https://github.com/Vargas991/react-template-project.git
+cd react-template-project
+yarn
+```
