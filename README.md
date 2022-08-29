@@ -2,7 +2,7 @@
 
 Install dependencies
 
-$yarn install
+$yarn 
 
 Please add the next code on settings.json of VS Code
 
