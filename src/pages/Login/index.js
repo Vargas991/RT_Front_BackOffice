@@ -1,13 +1,14 @@
-import Button from '../../components/Button'
-import ItemList from '../../components/ItemList'
+import LoginForm from '../../components/LoginForm'
 
 export default function Login() {
 	return (
-		<div>
-			<Button styles="primary">Primary</Button>
+		<div className="login-page container">
+			<LoginForm />
+
+			{/* <Button styles="primary">Primary</Button>
 			<Button styles="secondary">Seconday</Button>
 			<Button styles="black">Black</Button>
-			<ItemList />
+			<ItemList /> */}
 		</div>
 	)
 }

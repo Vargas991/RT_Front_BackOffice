@@ -14,10 +14,10 @@
 
 // 5. Components
 @import 'components/button', 'components/copy', 'components/pagination',
-  'components/item-list';
+	'components/item-list';
 
 // 6. Page-specific styles
-@import 'pages/home';
+@import 'pages/home', 'pages/login';
 
 // 7. Themes
 @import 'themes/default';
