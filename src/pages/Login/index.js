@@ -1,5 +1,5 @@
-import Button from '../components/Button'
-import ItemList from '../components/ItemList'
+import Button from '../../components/Button'
+import ItemList from '../../components/ItemList'
 
 export default function Login() {
 	return (
