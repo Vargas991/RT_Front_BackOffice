@@ -1,55 +1,56 @@
 .btn {
-    
-    border: none;
-    padding: .6em 1em;
-    margin: 0.2em 0.5em;
-    border-radius: .5rem;
-    font-size: 1em;
-    font-weight: 700;
-    cursor: pointer;
+	border: none;
+	padding: 0.6em 1em;
+	margin: 0.2em 0.5em;
+	border-radius: 0.5rem;
+	font-size: 1em;
+	font-weight: 700;
+	height: 2.5em;
+	min-width: 6em;
+	cursor: pointer;
 }
 
-.primary{
-    background-color: $brand-color;
-    color: $light-grey;
-    transition: ease 0.3s all;
+.primary {
+	background-color: $brand-color;
+	color: $light-grey;
+	transition: ease 0.3s all;
 
-    &:hover {
-        background-color: $brand-color-hover;
-    }
+	&:hover {
+		background-color: $brand-color-hover;
+	}
 
-    &:active {
-        background-color: $brand-color-activate;
-    }
+	&:active {
+		background-color: $brand-color-activate;
+	}
 
-    &:disabled {
-        background-color: $light-grey;
-        color: $mid-grey;
-        cursor: default;
-    }
+	&:disabled {
+		background-color: $light-grey;
+		color: $mid-grey;
+		cursor: default;
+	}
 }
 
-.secondary{
-    background-color: $secondary-color;
-    color: $text-color;
-    transition: ease 0.3s all;
+.secondary {
+	background-color: $secondary-color;
+	color: $text-color;
+	transition: ease 0.3s all;
 
-    &:hover {
-        background-color: $secondary-color-hover;
-    }
+	&:hover {
+		background-color: $secondary-color-hover;
+	}
 
-    &:active {
-        background-color: $secondary-color-activate;
-    }
+	&:active {
+		background-color: $secondary-color-activate;
+	}
 
-    &:disabled {
-        background-color: $light-grey;
-        color: $mid-grey;
-        cursor: default;
-    }
+	&:disabled {
+		background-color: $light-grey;
+		color: $mid-grey;
+		cursor: default;
+	}
 }
 
-.black{
-    background-color: $text-color;
-    color: $white-color;
+.black {
+	background-color: $text-color;
+	color: $white-color;
 }

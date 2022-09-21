@@ -15,9 +15,8 @@
 	width: 400px;
 	height: 400px;
 	background-color: $white-color;
-	border-radius: 15px;
 	padding: 0 30px;
-	box-shadow: 2px 2px 2px 3px rgba($color: $mid-grey, $alpha: 0.5);
+	@include shadow;
 }
 
 .helper-text {

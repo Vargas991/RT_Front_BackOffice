@@ -1,0 +1,23 @@
+.title-overview {
+	display: flex;
+	h1 {
+		margin-right: 2em;
+	}
+}
+
+.description-overview {
+	margin: 1em 0;
+	h4 {
+		margin-bottom: 0.5em;
+	}
+}
+
+.status-overview {
+	display: flex;
+	align-items: center;
+	margin: 1em 0;
+
+	h5 {
+		width: 10em;
+	}
+}

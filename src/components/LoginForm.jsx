@@ -1,7 +1,9 @@
 import { Divider, FormHelperText, TextField } from '@mui/material'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Button from './Button'
 export default function LoginForm({ name, password, handleChange }) {
+	const navigate = useNavigate()
+
 	return (
 		<div className="login-inputs">
 			<h1>Recruiting Tool</h1>
@@ -29,7 +31,9 @@ export default function LoginForm({ name, password, handleChange }) {
 					Forgot your password? <Link to="/">Click Here</Link>
 				</FormHelperText>
 			</div>
-			<Button styles="primary">LogIn</Button>
+			<Button styles="primary" onClick={() => navigate('/survey/list')}>
+				LogIn
+			</Button>
 		</div>
 	)
 }

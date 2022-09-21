@@ -1,0 +1,15 @@
+.cointainer-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	padding: 30px 40px;
+	min-height: 300px;
+	@include shadow;
+}
+
+.container-buttons {
+	margin-top: 20px;
+	display: flex;
+	justify-content: end;
+	width: 100%;
+}

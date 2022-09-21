@@ -9,6 +9,7 @@ import Overview from '../../../pages/Overview'
 import Questions from '../../../pages/Questions'
 import Results from '../../../pages/Results'
 import ResultTest from '../../../pages/ResultTest'
+import SurveyList from '../../../pages/SurveyList'
 import UpdateSurvey from '../../../pages/UpdateSurvey'
 
 export const survey = [
@@ -48,5 +49,9 @@ export const survey = [
 	{
 		path: 'survey/create',
 		element: <Create />
+	},
+	{
+		path: 'survey/list',
+		element: <SurveyList />
 	}
 ]
