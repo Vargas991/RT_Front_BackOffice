@@ -13,9 +13,13 @@ import MenuIcon from '@mui/icons-material/Menu'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
+import { Link } from 'react-router-dom'
 
 const drawerWidth = 240
-const navItems = ['Survey', 'Recruter']
+const navItems = [
+	{ name: 'Survey', path: '/survey/list' },
+	{ name: 'Recruter', path: '#' }
+]
 
 function NavbarApp(props) {
 	const { window } = props
@@ -28,14 +32,14 @@ function NavbarApp(props) {
 	const drawer = (
 		<Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
 			<Typography variant="h6" sx={{ my: 2 }}>
-        Recruiting Tool
+				Recruiting Tool
 			</Typography>
 			<Divider />
 			<List>
 				{navItems.map((item) => (
-					<ListItem key={item} disablePadding>
+					<ListItem key={item.path} disablePadding>
 						<ListItemButton sx={{ textAlign: 'center' }}>
-							<ListItemText primary={item} />
+							<ListItemText component={Link} to={item.path} primary={item.name} />
 						</ListItemButton>
 					</ListItem>
 				))}
@@ -44,7 +48,7 @@ function NavbarApp(props) {
 	)
 
 	const container =
-    window !== undefined ? () => window().document.body : undefined
+		window !== undefined ? () => window().document.body : undefined
 
 	return (
 		<Box sx={{ display: 'flex' }}>
@@ -67,12 +71,17 @@ function NavbarApp(props) {
 						component="div"
 						sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
 					>
-            Recruiting Tool
+						Recruiting Tool
 					</Typography>
 					<Box sx={{ display: { xs: 'none', sm: 'block' } }}>
 						{navItems.map((item) => (
-							<Button key={item} sx={{ color: '#fff' }}>
-								{item}
+							<Button
+								component={Link}
+								to={item.path}
+								key={item.path}
+								sx={{ color: '#fff' }}
+							>
+								{item.name}
 							</Button>
 						))}
 					</Box>
@@ -108,9 +117,9 @@ function NavbarApp(props) {
 
 NavbarApp.propTypes = {
 	/**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
+	 * Injected by the documentation to work in an iframe.
+	 * You won't need it on your project.
+	 */
 	window: PropTypes.isRequired
 }
 

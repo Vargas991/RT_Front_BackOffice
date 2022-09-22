@@ -1,64 +1,66 @@
-.item-list-container{
-    display: flex;
-    border: solid 0.5px $mid-grey;
-    border-radius: 0.5em;
-    justify-content: space-evenly;
-    margin: 0.5em 0.3em;
-    padding: 0.3em 0;
-    cursor: pointer;
-
+.item-list-container {
+	display: flex;
+	border: solid 0.5px $mid-grey;
+	border-radius: 0.5em;
+	justify-content: space-evenly;
+	margin: 0.5em 0.3em;
+	padding: 0.3em 0;
+	cursor: pointer;
+	width: 100%;
 }
 
 .item-column {
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 
-    padding: 0 0.5em;
-    .item-list_switch{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+	padding: 0 0.5em;
+	.item-list_switch {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 }
 .description-survey {
-    font-size: 0.875em;
-    margin-top: 0.2em;
+	font-size: 0.875em;
+	margin-top: 0.2em;
 }
-.divition{
-    background-color: $mid-grey;
-    width: 0.1px;
-    border-radius: 0.1px;
+.divition {
+	background-color: $mid-grey;
+	width: 0.1px;
+	border-radius: 0.1px;
 }
 .copy-link {
-    color: $mid-grey;
-    font-size: small;
-    text-align: center;
+	color: $mid-grey;
+	font-size: small;
+	text-align: center;
 }
-.copy-section{
-    text-align: center;
-}
-
-.copy-icon{
-    cursor: pointer;
-    color: $mid-grey;
-    transition: all 0.3s ease;
-    &:hover{
-        color: $brand-color;
-    }
-    &:active{
-        color: $brand-color-activate;
-    }
+.copy-section {
+	text-align: center;
 }
 
-.text-lefth{
-    align-items: start;
+.copy-icon {
+	cursor: pointer;
+	color: $mid-grey;
+	transition: all 0.3s ease;
+	&:hover {
+		color: $brand-color;
+	}
+	&:active {
+		color: $brand-color-activate;
+	}
+}
+
+.text-lefth {
+	align-items: start;
 }
 
 .disabled {
-    transition: all 0.3s ease;
-    display: none;
+	transition: all 0.3s ease;
+	display: none;
 }
 
+.full-width {
+	width: 100%;
+}

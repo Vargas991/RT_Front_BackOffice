@@ -1,0 +1,11 @@
+.survey-menu-layout {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 3.5em;
+	background-color: $secondary-color-hover;
+
+	a {
+		margin: 1em 1em;
+	}
+}

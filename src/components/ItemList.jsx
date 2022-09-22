@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import Switch from '@mui/material/Switch'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
+import { Link } from 'react-router-dom'
 
-export default function ItemList({ name, description, date }) {
+export default function ItemList({ itemId, name, description, date }) {
 	const [checked, setChecked] = useState(true)
 
 	const handleSwitchChange = (event) => {
@@ -12,11 +13,17 @@ export default function ItemList({ name, description, date }) {
 	return (
 		<div className="item-list-container">
 			<div className="item-column text-lefth">
-				<h3>Edderson Survey{name}</h3>
-				<p className="description-survey">
-          Esta en una breve description de la survey{description}
-				</p>
-				<p className="description-survey">Creation date: {date}</p>
+				<Link to={`/survey/${itemId}/overview`}>
+					<h3>
+						{' '}
+						Survey # {itemId}
+						{name}
+					</h3>
+					<p className="description-survey">
+						Esta en una breve description de la survey{description}
+					</p>
+					<p className="description-survey">Creation date: {date}</p>
+				</Link>
 			</div>
 			<div className="divition" />
 			<div className="item-column ">

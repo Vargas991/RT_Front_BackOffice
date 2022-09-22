@@ -1,9 +1,10 @@
+import { SurveyMenu } from '../components/SurveyMenu'
 import { Outlet } from 'react-router-dom'
 
 function SurveyLayout() {
 	return (
 		<>
-			<div>OVerview Results Questions</div>
+			<SurveyMenu />
 			<Outlet />
 		</>
 	)
