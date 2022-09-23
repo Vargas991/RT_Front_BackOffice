@@ -6,6 +6,12 @@
 	background-color: $secondary-color-hover;
 
 	a {
-		margin: 1em 1em;
+		list-style: none;
+		padding: 0 10px;
+	}
+	.active {
+		border-bottom: 4px solid $brand-color;
+		color: $text-color;
+		padding-bottom: 2px;
 	}
 }

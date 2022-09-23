@@ -1,17 +1,17 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 export function SurveyMenu() {
 	return (
 		<div className="survey-menu-layout">
-			<Link to="overview">
+			<NavLink to="overview" activateclassname="active">
 				<h3>Overview</h3>
-			</Link>
-			<Link to="results">
+			</NavLink>
+			<NavLink to="results" activateclassname="active">
 				<h3>Results</h3>
-			</Link>
-			<Link to="questions">
+			</NavLink>
+			<NavLink to="questions" activateclasscame="active">
 				<h3>Questions</h3>
-			</Link>
+			</NavLink>
 		</div>
 	)
 }

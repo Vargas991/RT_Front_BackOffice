@@ -1,10 +1,18 @@
 import { Chip, Divider, IconButton, Switch, TextField } from '@mui/material'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import DeleteIcon from '@mui/icons-material/Edit'
 
 function Overview() {
+	const navigate = useNavigate()
 	const [checked, setChecked] = useState(false)
+	const [surveyId, setSurveyId] = useState(null)
+	const { id } = useParams()
+
+	useEffect(() => {
+		setSurveyId(id)
+	}, [])
 
 	const handleSwitchChange = (e) => {
 		setChecked(e.target.checked)
@@ -12,8 +20,11 @@ function Overview() {
 	return (
 		<div className="container">
 			<div className="title-overview">
-				<h1>Title Survey #1</h1>
-				<IconButton aria-label="delete">
+				<h1>Title Survey #{id}</h1>
+				<IconButton
+					aria-label="delete"
+					onClick={() => navigate(`/survey/${surveyId}/edit`)}
+				>
 					<DeleteIcon />
 				</IconButton>
 			</div>
