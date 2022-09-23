@@ -3,9 +3,8 @@
 	border: solid 0.5px $mid-grey;
 	border-radius: 0.5em;
 	justify-content: space-evenly;
-	margin: 0.5em 0.3em;
+	margin: 0.5em 0;
 	padding: 0.3em 0;
-	cursor: pointer;
 	width: 100%;
 }
 
@@ -63,4 +62,10 @@
 
 .full-width {
 	width: 100%;
+}
+
+.flex-center {
+	font-size: 0.8em;
+	display: flex;
+	align-items: center;
 }

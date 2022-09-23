@@ -11,7 +11,7 @@ export default function ItemList({ itemId, name, description, date }) {
 	}
 
 	return (
-		<div className="item-list-container">
+		<td className="item-list-container">
 			<div className="item-column text-lefth">
 				<Link to={`/survey/${itemId}/overview`}>
 					<h3>
@@ -58,6 +58,6 @@ export default function ItemList({ itemId, name, description, date }) {
 					}}
 				/>
 			</div>
-		</div>
+		</td>
 	)
 }

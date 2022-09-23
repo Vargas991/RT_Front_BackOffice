@@ -30,7 +30,11 @@ export const survey = [
 						element: <Results />
 					},
 					{
-						path: 'results/:idTests',
+						path: 'edit',
+						element: <Create />
+					},
+					{
+						path: 'results/:idTest',
 						element: <ResultTest />
 					},
 					{
