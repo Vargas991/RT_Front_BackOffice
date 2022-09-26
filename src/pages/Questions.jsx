@@ -1,6 +1,7 @@
+import QuestionsComponent from '../components/questions/QuestionsComponent'
 
 function Questions() {
-	return <div>Questions</div>
+	return <QuestionsComponent />
 }
 
 export default Questions

@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom'
 const drawerWidth = 240
 const navItems = [
 	{ name: 'Survey', path: '/survey/list' },
-	{ name: 'Recruter', path: '#' }
+	{ name: 'Recruiter', path: '#' }
 ]
 
 function NavbarApp(props) {

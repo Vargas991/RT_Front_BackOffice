@@ -45,7 +45,7 @@ function Overview() {
 					{checked ? (
 						<Chip label="Published" color="success" />
 					) : (
-						<Chip label="Draf" variant="outlined" />
+						<Chip label="Draft" variant="outlined" />
 					)}
 					<Switch checked={checked} onChange={handleSwitchChange} />
 				</div>

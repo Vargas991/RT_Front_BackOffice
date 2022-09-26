@@ -1,8 +1,72 @@
-import { Divider, IconButton, TextareaAutosize } from '@mui/material'
+import { Sections } from '../components/Sections'
+import { References } from '../components/References'
+import { InfoUser } from '../components/InfoUser'
+import { Divider, TextareaAutosize } from '@mui/material'
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Button from '../components/Button'
-import { CheckCircle, Cancel } from '@mui/icons-material'
+
+export const user = {
+	name: 'Pedro Perez',
+	phone: '+1 4545 1212 454',
+	mail:  'email@test.com'
+} 
+
+export const references = [
+	{
+		name : 'Reference #1',
+		phone: '+1 4545 1212 454',
+		title: 'Engineer'
+	},
+	{
+		name : 'Reference #2',
+		phone: '+1 4545 3432 454',
+		title: 'Engineer'
+	},
+	{
+		name : 'Reference #3',
+		phone: '+1 4545 1234 454',
+		title: 'Engineer'
+	},
+]
+  
+export const sectionsData = [
+	{
+		title: 'Section Title #1',
+		dataQA: [
+			{
+				question: 'QuestionLorem, ipsum dolor sit amet consectetur adipisicing elit. Quasinesciunt non #1',
+				answer: 'A: 11Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasinesciunt non sequi quis odio ipsa. Lorem, ipsum dolor sit ametconsectetur adipisicing elit. Quasi nesciunt non sequi quis odio ipsa.'
+			},
+			{
+				question: 'QuestionLorem, ipsum dolor sit amet consectetur adipisicing elit. Quasinesciunt non #1',
+				answer: 'A: 22Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasinesciunt non sequi quis odio ipsa. Lorem, ipsum dolor sit ametconsectetur adipisicing elit. Quasi nesciunt non sequi quis odio ipsa.'
+			},
+			{
+				question: 'QuestionLorem, ipsum dolor sit amet consectetur adipisicing elit. Quasinesciunt non #1',
+				answer: 'A: 33Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasinesciunt non sequi quis odio ipsa. Lorem, ipsum dolor sit ametconsectetur adipisicing elit. Quasi nesciunt non sequi quis odio ipsa.'
+			}
+		]
+	},
+	{
+		title: 'Section Title #2',
+		dataQA: [
+			{
+				question: 'QuestionLorem, ipsum dolor sit amet consectetur adipisicing elit. Quasinesciunt non #1',
+				answer: 'A: 1 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasinesciunt non sequi quis odio ipsa. Lorem, ipsum dolor sit ametconsectetur adipisicing elit. Quasi nesciunt non sequi quis odio ipsa.'
+			},
+			{
+				question: 'QuestionLorem, ipsum dolor sit amet consectetur adipisicing elit. Quasinesciunt non #1',
+				answer: 'A: 2 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasinesciunt non sequi quis odio ipsa. Lorem, ipsum dolor sit ametconsectetur adipisicing elit. Quasi nesciunt non sequi quis odio ipsa.'
+			},
+			{
+				question: 'QuestionLorem, ipsum dolor sit amet consectetur adipisicing elit. Quasinesciunt non #1',
+				answer: 'A: 3 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasinesciunt non sequi quis odio ipsa. Lorem, ipsum dolor sit ametconsectetur adipisicing elit. Quasi nesciunt non sequi quis odio ipsa.'
+			}
+		]
+	},
+]
+
 function ResultTest() {
 	const { id, idTest } = useParams()
 	useEffect(() => {
@@ -21,213 +85,27 @@ function ResultTest() {
 			<p>Date of Creation: 2022/09/23</p>
 			<Divider />
 			<div>
-				<div className="surveyed-data">
-					<h2>Pedro Perez #idTest</h2>
-					<p>Phone:+1 4545 1212 454</p>
-					<p>Email: email@test.com</p>
-				</div>
-				<div className="container-section-references">
-					<h3>References</h3>
-					<div className="container-references">
-						<div className="reference">
-							<h4>Reference #1</h4>
-							<p>Phone: +1 4545 1212 454</p>
-							<p>Title: Engineer</p>
-						</div>
-						<div className="reference">
-							<h4>Reference #2</h4>
-							<p>Phone: +1 4545 1212 454</p>
-							<p>Title: Engineer</p>
-						</div>
-						<div className="reference">
-							<h4>Reference #3</h4>
-							<p>Phone: +1 4545 1212 454</p>
-							<p>Title: Engineer</p>
-						</div>
-					</div>
+				<InfoUser   user={user}  />
+				
+				<References   references={references}  />
+
+				<Divider />
+				<Sections   sectionsData={sectionsData}  />
+				<div className="observation-section">
+					<h4>Notes: </h4>
+					<TextareaAutosize
+						minRows={3}
+						placeholder="Please add a remark about this test"
+						style={{
+							width: '100%'
+						}}
+					/>
 				</div>
 				<Divider />
-				<div className="section-container">
-					<h3 className="margin-title">Section Title #1</h3>
-					<h4 className="margin-title">Questions</h4>
-					<div className="container-questions">
-						<div className="question-card">
-							<div className="question-header">
-								<p>
-									QuestionLorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi
-									nesciunt non #1
-								</p>
-								<div className="flex-center">
-									<IconButton>
-										<Cancel color="warning" />
-									</IconButton>
-									<IconButton>
-										<CheckCircle color="success" />
-									</IconButton>
-								</div>
-							</div>
-							<Divider />
-							<p className="answer-text">
-								A: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi
-								nesciunt non sequi quis odio ipsa. Lorem, ipsum dolor sit amet
-								consectetur adipisicing elit. Quasi nesciunt non sequi quis odio ipsa.
-							</p>
-						</div>
-						<div className="question-card">
-							<div className="question-header">
-								<p>Question #1</p>
-								<div className="flex-center">
-									<IconButton>
-										<Cancel color="warning" />
-									</IconButton>
-									<IconButton>
-										<CheckCircle color="success" />
-									</IconButton>
-								</div>
-							</div>
-							<Divider />
-							<p className="answer-text">
-								A: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi
-								nesciunt non sequi quis odio ipsa.
-							</p>
-						</div>
-						<div className="question-card">
-							<div className="question-header">
-								<p>Question #1</p>
-								<div className="flex-center">
-									<IconButton>
-										<Cancel color="warning" />
-									</IconButton>
-									<IconButton>
-										<CheckCircle color="success" />
-									</IconButton>
-								</div>
-							</div>
-							<Divider />
-							<p className="answer-text">
-								A: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi
-								nesciunt non sequi quis odio ipsa.
-							</p>
-						</div>
-					</div>
+				<div className="final-buttons">
+					<Button styles="secondary">Back</Button>
+					<Button styles="primary">Save</Button>
 				</div>
-				<Divider />
-				<div className="section-container">
-					<h3 className="margin-title">Section Title #2</h3>
-					<h4 className="margin-title">Questions</h4>
-					<div className="container-questions">
-						<div className="question-card">
-							<div className="question-header">
-								<p>
-									QuestionLorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi
-									nesciunt non #1
-								</p>
-								<div className="flex-center">
-									<IconButton>
-										<Cancel color="warning" />
-									</IconButton>
-									<IconButton>
-										<CheckCircle color="success" />
-									</IconButton>
-								</div>
-							</div>
-							<Divider />
-							<p className="answer-text">
-								A: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi
-								nesciunt non sequi quis odio ipsa. Lorem, ipsum dolor sit amet
-								consectetur adipisicing elit. Quasi nesciunt non sequi quis odio ipsa.
-							</p>
-						</div>
-						<div className="question-card">
-							<div className="question-header">
-								<p>Question #1</p>
-								<div className="flex-center">
-									<IconButton>
-										<Cancel color="warning" />
-									</IconButton>
-									<IconButton>
-										<CheckCircle color="success" />
-									</IconButton>
-								</div>
-							</div>
-							<Divider />
-							<p className="answer-text">
-								A: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi
-								nesciunt non sequi quis odio ipsa.
-							</p>
-						</div>
-						<div className="question-card">
-							<div className="question-header">
-								<p>Question #1</p>
-								<div className="flex-center">
-									<IconButton>
-										<Cancel color="warning" />
-									</IconButton>
-									<IconButton>
-										<CheckCircle color="success" />
-									</IconButton>
-								</div>
-							</div>
-							<Divider />
-							<p className="answer-text">
-								A: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi
-								nesciunt non sequi quis odio ipsa.
-							</p>
-						</div>
-						<div className="question-card">
-							<div className="question-header">
-								<p>Question #1</p>
-								<div className="flex-center">
-									<IconButton>
-										<Cancel color="warning" />
-									</IconButton>
-									<IconButton>
-										<CheckCircle color="success" />
-									</IconButton>
-								</div>
-							</div>
-							<Divider />
-							<p className="answer-text">
-								A: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi
-								nesciunt non sequi quis odio ipsa.
-							</p>
-						</div>
-						<div className="question-card">
-							<div className="question-header">
-								<p>Question #1</p>
-								<div className="flex-center">
-									<IconButton>
-										<Cancel color="warning" />
-									</IconButton>
-									<IconButton>
-										<CheckCircle color="success" />
-									</IconButton>
-								</div>
-							</div>
-							<Divider />
-							<p className="answer-text">
-								A: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi
-								nesciunt non sequi quis odio ipsa.
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<Divider />
-			<div className="observation-section">
-				<h4>Observations</h4>
-				<TextareaAutosize
-					minRows={3}
-					placeholder="Please add a remark about this test"
-					style={{
-						width: '100%'
-					}}
-				/>
-			</div>
-			<Divider />
-			<div className="final-buttons">
-				<Button styles="secondary">Back</Button>
-				<Button styles="primary">Save</Button>
 			</div>
 		</div>
 	)
