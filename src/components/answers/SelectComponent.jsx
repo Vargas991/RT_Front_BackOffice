@@ -1,6 +1,7 @@
 import { Select, MenuItem } from '@mui/material'
 
-export default function SelectComponent ({itemNumber,question,options, value, handleChange}) {
+export default function SelectComponent ({itemNumber,question,options=[], value, handleChange}) {
+	console.log(options)
 	return (
 		<div>
 			<p>{itemNumber}- {question}</p>
@@ -11,7 +12,7 @@ export default function SelectComponent ({itemNumber,question,options, value, ha
 				onChange={handleChange}
 			>
 				{options.map((item,idx)=>
-					<MenuItem key={idx} value={item.value}>{item.name}</MenuItem>
+					<MenuItem key={idx} value={idx+1}>{item}</MenuItem>
 				)}
 			</Select>
 		</div>

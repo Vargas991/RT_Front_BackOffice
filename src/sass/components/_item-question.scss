@@ -1,0 +1,15 @@
+.item-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: solid 2px $mid-grey;
+    padding: .8em 1em;
+
+}
+.question-title{
+    max-width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    word-break:break-all;
+
+}

@@ -1,6 +1,11 @@
-import { FormControl, TextField } from '@mui/material'
+import { ItemListQuestions } from '../ItemListQuestions'
+import { FormControl, MenuItem, Select, TextField } from '@mui/material'
 import { useState } from 'react'
 import Button from '../Button'
+import DefaultCreditDebit from '../answers/DefaultCreditDebit'
+import RadioButtonComponent from '../answers/RadioButtonComponent'
+import SelectComponent from '../answers/SelectComponent'
+
 
 let initialState = 
 	{
@@ -8,7 +13,40 @@ let initialState =
 		type: ''
 	}
 
-export const AddNewquestion =({question,handleChange})=>{
+
+const componentsAnswer = {
+	0: DefaultCreditDebit,
+	1: SelectComponent,
+	2: RadioButtonComponent
+}
+// const componentsQuestion = {
+// 	0: DefaultCreditDebit,
+// 	1: SelectComponent,
+// 	2: RadioButtonComponent
+// }
+
+export const options = {
+
+	0:{
+		name: 'Default'
+	}, 
+	1:{
+		name: 'Select'
+	}, 
+	2:{
+		name: 'Radio Button'
+	} 
+}
+
+ 
+export const Story = ({storyType, componentType, ...props}) =>{
+  
+	const SpecigicStory = componentType[storyType]
+	return <SpecigicStory {...props} />
+	// return <SpecigicStory itemNumber={itemNumber} question={question} options={options} />
+}
+
+export const AddNewquestion =({question,type,handleChange})=>{
 	return <div>
 		<FormControl >
 			<TextField
@@ -21,8 +59,19 @@ export const AddNewquestion =({question,handleChange})=>{
 				required
 				onChange={handleChange}
 			/>
+			<Select
+				id="demo-simple-select"
+				value={type}
+				name="type"
+				label="Select a Option"
+				onChange={handleChange}
+			>
+				{Object.keys(options).map((item,idx)=>
+					<MenuItem key={idx} value={item}>{options[item].name}</MenuItem>
+				)}
+			</Select>
+			{ <p>{options[type]?.name}</p> }
 		</FormControl>
-
 	</div>  
 }
 
@@ -35,15 +84,19 @@ export default function QuestionsComponent() {
 		setShowAddQuestion(!showAddQuestion)
 	}
 	const handleAddQuestion = () =>{
-
+		console.log(questionList)
+		if(questionAdd.question==='' || questionAdd.question===undefined)
+			return
 		initialState = {
 			questionTitle: questionAdd.question,
-			type: 'Default'
+			type: questionAdd.type,
+			options: ['okis','okas','okos']
 		}
 		setQuestionList([...questionList ,initialState])
+		handleShowAddQuestion()
+
 		
 		resetQuestionAdd()
-		handleShowAddQuestion()
 	}
 
 	const resetQuestionAdd = () =>{
@@ -51,7 +104,8 @@ export default function QuestionsComponent() {
 
 			...questionAdd,
 			question: '',
-			type: ''
+			type: '',
+			options: []
 		})
 	}
 
@@ -66,21 +120,26 @@ export default function QuestionsComponent() {
 	return (
 		<div>
 			<h3>Questions</h3>
-			{questionList.length>0&& questionList.map((q,idx)=>(
-				<div key={idx}>
-					<p>  {idx+1}-{q.questionTitle}</p>
-					<p>{q.type}</p>
-				</div>
+			{questionList.length>0&& questionList.map((item,idx)=>(
+				<ItemListQuestions key={idx} idx={idx} item={item}  />
 			))
 			}
 			{!questionList.length &&<p> Add a question please</p>}
 			{!showAddQuestion &&<Button styles='primary' onClick={handleShowAddQuestion}>Add question</Button>}	
 			{ showAddQuestion && <>
-				<AddNewquestion {...questionAdd} handleChange={handleChangeAdd} />            
-				<Button styles='primary' onClick={handleAddQuestion}>Save</Button>	
+				<FormControl>
+					<AddNewquestion {...questionAdd} handleChange={handleChangeAdd} />            
+					<Button styles='primary' onClick={handleAddQuestion}>Save</Button>	
+				</FormControl>
 			</>
 
+			}
+			{
+				questionList.map((item,index) =>(
+					<Story key={index} storyType={item.type} componentType={componentsAnswer} itemNumber={index+1} question={item.questionTitle} options={item.options} />
+				))
 			}
 		</div>
 	)
 }
+
