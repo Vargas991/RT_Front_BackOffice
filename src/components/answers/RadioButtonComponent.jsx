@@ -14,7 +14,7 @@ export default function RadioButtonComponent ({itemNumber,question,options=[], v
 					onChange={handleChange}
 				>
 					{options.map((item,idx)=>
-						<FormControlLabel key={idx} value={idx} control={<Radio />} label={item} />
+						<FormControlLabel key={idx} value={idx} control={<Radio />} label={item.option} />
 					)}
         
 				</RadioGroup>

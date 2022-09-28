@@ -1,10 +1,10 @@
 import { Chip, IconButton } from '@mui/material'
-import { options } from './questions/QuestionsComponent'
+import { options } from './questions/AddNewQuestion'
 import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/Delete'
 
 export function ItemListQuestions({
-	idx, item
+	idx, item, onRemove
 }) {
 	return <div className='item-question' >
 		<div className='question-title'>  {idx + 1}-{' '}{item.questionTitle}</div>
@@ -19,7 +19,7 @@ export function ItemListQuestions({
 		</IconButton>
 		<IconButton
 			aria-label="delete"
-			// onClick={() => navigate(`/survey/${surveyId}/edit`)}
+			onClick={onRemove}
 		>
 			<DeleteIcon fontSize='small' />
 		</IconButton>

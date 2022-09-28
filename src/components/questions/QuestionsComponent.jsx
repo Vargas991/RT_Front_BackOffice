@@ -1,16 +1,21 @@
 import { ItemListQuestions } from '../ItemListQuestions'
-import { FormControl, MenuItem, Select, TextField } from '@mui/material'
-import { useState } from 'react'
+import { FormControl } from '@mui/material'
+import {  useState } from 'react'
 import Button from '../Button'
 import DefaultCreditDebit from '../answers/DefaultCreditDebit'
 import RadioButtonComponent from '../answers/RadioButtonComponent'
 import SelectComponent from '../answers/SelectComponent'
-
+import { AddNewQuestion } from './AddNewQuestion'
+import { useDispatch, useSelector } from 'react-redux'
+import { setDeleteQuestion, setQuestion } from '../../pages/Questions/questionsSlice'
+import { useEffect } from 'react'
+import OptionsInput from './OptionsInput'
 
 let initialState = 
 	{
 		questionTitle: '',
-		type: ''
+		type: '',
+		options: []
 	}
 
 
@@ -19,25 +24,16 @@ const componentsAnswer = {
 	1: SelectComponent,
 	2: RadioButtonComponent
 }
+
+const initialStateOption = {
+	option: '',
+	value: ''
+}
 // const componentsQuestion = {
 // 	0: DefaultCreditDebit,
 // 	1: SelectComponent,
 // 	2: RadioButtonComponent
 // }
-
-export const options = {
-
-	0:{
-		name: 'Default'
-	}, 
-	1:{
-		name: 'Select'
-	}, 
-	2:{
-		name: 'Radio Button'
-	} 
-}
-
  
 export const Story = ({storyType, componentType, ...props}) =>{
   
@@ -46,67 +42,47 @@ export const Story = ({storyType, componentType, ...props}) =>{
 	// return <SpecigicStory itemNumber={itemNumber} question={question} options={options} />
 }
 
-export const AddNewquestion =({question,type,handleChange})=>{
-	return <div>
-		<FormControl >
-			<TextField
-				size="small"
-				id="outline-name"
-				label="Question"
-				value={question}
-				name='question'
-				fullWidth
-				required
-				onChange={handleChange}
-			/>
-			<Select
-				id="demo-simple-select"
-				value={type}
-				name="type"
-				label="Select a Option"
-				onChange={handleChange}
-			>
-				{Object.keys(options).map((item,idx)=>
-					<MenuItem key={idx} value={item}>{options[item].name}</MenuItem>
-				)}
-			</Select>
-			{ <p>{options[type]?.name}</p> }
-		</FormControl>
-	</div>  
-}
-
 export default function QuestionsComponent() {
-	const [questionList, setQuestionList] = useState([])
+	const questions = useSelector(({questions})=>questions.questions)
+	const dispatch = useDispatch()
+	
+	const [questionList, setQuestionList] = useState(questions)
 	const [questionAdd, setQuestionAdd] = useState({})
 	const [showAddQuestion , setShowAddQuestion] = useState(false)
+	
+	console.log(questionList)
+	useEffect(()=>{
+		setQuestionList(questions)
+	},[questions])
+
+	const handleOnRemove = (index) => {
+		const copyRows = [...questionList]
+		copyRows.splice(index, 1)
+		dispatch(setDeleteQuestion(copyRows))
+		// setQuestionList(copyRows)
+	}
 
 	const handleShowAddQuestion = () =>{
 		setShowAddQuestion(!showAddQuestion)
 	}
 	const handleAddQuestion = () =>{
-		console.log(questionList)
 		if(questionAdd.question==='' || questionAdd.question===undefined)
 			return
 		initialState = {
 			questionTitle: questionAdd.question,
 			type: questionAdd.type,
-			options: ['okis','okas','okos']
+			options: optionsInput
 		}
-		setQuestionList([...questionList ,initialState])
+		dispatch(setQuestion(initialState))
+		// setQuestionList([...questionList ,initialState])
 		handleShowAddQuestion()
-
 		
 		resetQuestionAdd()
 	}
 
 	const resetQuestionAdd = () =>{
-		setQuestionAdd({
-
-			...questionAdd,
-			question: '',
-			type: '',
-			options: []
-		})
+		setQuestionAdd(initialState)
+		setOptionsInput([])
 	}
 
 	const handleChangeAdd = (e) =>{
@@ -117,25 +93,58 @@ export default function QuestionsComponent() {
 		})
 	}
 
+
+	const [optionsInput, setOptionsInput] = useState([initialStateOption])
+
+	const handleOnChange = (index, e) => {
+		const copyOptions = [...optionsInput]
+		copyOptions[index] = {
+			...copyOptions[index],
+			[e.target.name]: e.target.value
+		}
+		setOptionsInput(copyOptions)
+		console.log(optionsInput)
+	}
+	const handleAddOption = () => {
+		setOptionsInput(optionsInput.concat({
+			option: '',
+			value: ''
+		}))
+		
+	}
+
 	return (
 		<div>
 			<h3>Questions</h3>
-			{questionList.length>0&& questionList.map((item,idx)=>(
-				<ItemListQuestions key={idx} idx={idx} item={item}  />
+			{questions.length>0&& questionList.map((item,idx)=>(
+				<ItemListQuestions onRemove={() => handleOnRemove(idx)} key={idx} idx={idx} item={item}  />
 			))
 			}
-			{!questionList.length &&<p> Add a question please</p>}
-			{!showAddQuestion &&<Button styles='primary' onClick={handleShowAddQuestion}>Add question</Button>}	
+			{!questions.length &&<p> Add a question please</p>}
+			{!showAddQuestion &&<Button styles='dotted' onClick={handleShowAddQuestion}>Add question</Button>}	
 			{ showAddQuestion && <>
 				<FormControl>
-					<AddNewquestion {...questionAdd} handleChange={handleChangeAdd} />            
+					<AddNewQuestion {...questionAdd}  handleChange={handleChangeAdd} /> 
+					{optionsInput.map((item, idx) => {
+						return (
+							<OptionsInput
+								key={idx}
+								index={idx + 1}
+								value={item.option}
+								handleChangeOptions={(e)=>handleOnChange(idx,e)}
+							/>
+						)
+					})}  
+					<Button styles="dotted" onClick={handleAddOption}>
+					Add a option
+					</Button>         
 					<Button styles='primary' onClick={handleAddQuestion}>Save</Button>	
 				</FormControl>
 			</>
 
 			}
 			{
-				questionList.map((item,index) =>(
+				questions.map((item,index) =>(
 					<Story key={index} storyType={item.type} componentType={componentsAnswer} itemNumber={index+1} question={item.questionTitle} options={item.options} />
 				))
 			}

@@ -12,7 +12,7 @@ export default function SelectComponent ({itemNumber,question,options=[], value,
 				onChange={handleChange}
 			>
 				{options.map((item,idx)=>
-					<MenuItem key={idx} value={idx+1}>{item}</MenuItem>
+					<MenuItem key={idx} value={idx}>{item.option}</MenuItem>
 				)}
 			</Select>
 		</div>

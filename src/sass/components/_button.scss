@@ -1,7 +1,7 @@
 .btn {
 	border: none;
 	padding: 0.6em 1em;
-	margin: 0.2em 0.5em;
+	// margin: 0.2em 0.5em;
 	border-radius: 0.5rem;
 	font-size: 1em;
 	font-weight: 700;
@@ -53,4 +53,27 @@
 .black {
 	background-color: $text-color;
 	color: $white-color;
+}
+
+.dotted{
+	width: 100%;
+	text-align: center;
+	color: $dark-grey;
+	background-color: $white-color;
+	border: $mid-grey dashed .15em ;
+
+	&:hover {
+		color: $white-color;
+		background-color: $light-grey;
+	}
+
+	&:active {
+		background-color: $secondary-color-activate;
+	}
+
+	&:disabled {
+		background-color: $light-grey;
+		color: $mid-grey;
+		cursor: default;
+	}
 }
