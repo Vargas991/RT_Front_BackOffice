@@ -11,6 +11,7 @@ export default function OptionsInput ({value,handleChangeOptions,index}){
 			fullWidth
 			required
 			variant='standard'
+			sx={{marginBottom: '1em'}}
 			onChange={(e)=>handleChangeOptions(e)}/>
 	)
 }

@@ -1,7 +1,6 @@
 import { Select, MenuItem } from '@mui/material'
 
-export default function SelectComponent ({itemNumber,question,options=[], value, handleChange}) {
-	console.log(options)
+export default function SelectComponent ({itemNumber,question,options=[], value=0, handleChange}) {
 	return (
 		<div>
 			<p>{itemNumber}- {question}</p>
