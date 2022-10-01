@@ -87,14 +87,15 @@ export default function QuestionsComponent() {
 
 	return (
 		<>
-			<h3>Questions</h3>
+			<h4>Questions</h4>
 
 			{!questions.length &&<p className='no-question'> You dont have any questions in this section</p>}
 			
 			{questions.length>0&& <div className='container-list-questions'>
 				{questions.map((item,idx)=>(
-					<ItemListQuestions onRemove={() => handleOnRemove(idx)} key={idx} idx={idx} item={item}  />
+					<ItemListQuestions onRemove={() => handleOnRemove(idx)} key={idx} idx={idx} title={item.questionTitle} type={item.type} />
 				))}
+
 			</div> 
 			}
 			
@@ -120,7 +121,7 @@ export default function QuestionsComponent() {
 					} 
 					<div className='container-buttons'>
 						<Button styles='secondary' onClick={handleCancelAdd}>Cancel</Button>	
-						<Button styles='primary' onClick={handleAddQuestion}>Save</Button>	
+						<Button styles='black' onClick={handleAddQuestion}>Save options</Button>	
 					</div> 
 				</FormControl>
 				:<Button styles='dotted' onClick={handleShowAddQuestion}>Add  question</Button>

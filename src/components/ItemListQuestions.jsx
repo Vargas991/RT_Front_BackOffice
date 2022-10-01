@@ -1,29 +1,19 @@
-import { Chip, IconButton } from '@mui/material'
+import { IconsDeleteUpdate } from './questions/IconsDeleteUpdate'
+import { Chip } from '@mui/material'
 import { options } from './questions/AddNewQuestion'
-import EditIcon from '@mui/icons-material/Edit'
-import DeleteIcon from '@mui/icons-material/Delete'
 
-export function ItemListQuestions({
-	idx, item, onRemove
+
+export function  ItemListQuestions({
+	idx, title, type=null,onRemove
 }) {
 	return <div className='item-question' >
-		<div className='question-title'>  {idx + 1}-{' '}{item.questionTitle}</div>
-		<div>
-			<Chip label={options[item.type].name} color="default" />
-		</div>
-		<div><IconButton
-			aria-label="delete"
-			// onClick={() => navigate(`/survey/${surveyId}/edit`)}
-		>
-			<EditIcon fontSize='small' />
-		</IconButton>
-		<IconButton
-			aria-label="delete"
-			onClick={onRemove}
-		>
-			<DeleteIcon fontSize='small' />
-		</IconButton>
-		</div>
+		<div className='question-title'>  {idx + 1}-{' '}{ title}</div>
+		{type &&
+			<div>
+				<Chip label={options[type].name} color="default" />
+			</div>
+		}
+		<IconsDeleteUpdate   onRemove={onRemove}  />
 	</div>
 }
-  
+   

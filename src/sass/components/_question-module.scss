@@ -1,9 +1,26 @@
+.container-section{
+	border: solid 2px $light-grey;
+	padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
 .question-add{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     margin: 1.2em 0 !important;
+    padding: 20px !important;
 	width: 60%;
+    background-color: $white-color;
+    border-radius: 15px;
+}
+
+.container-section-add {
+    background-color: $background-color-sections;
+    padding: 2em;
+    border-radius: 15px;
+    margin-top: 2em;
 }
 
 .no-question{
