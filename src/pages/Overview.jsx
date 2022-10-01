@@ -2,7 +2,7 @@ import { Chip, Divider, IconButton, Switch, TextField } from '@mui/material'
 import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
-import DeleteIcon from '@mui/icons-material/Edit'
+import EditIcon from '@mui/icons-material/Edit'
 
 function Overview() {
 	const navigate = useNavigate()
@@ -25,7 +25,7 @@ function Overview() {
 					aria-label="delete"
 					onClick={() => navigate(`/survey/${surveyId}/edit`)}
 				>
-					<DeleteIcon />
+					<EditIcon />
 				</IconButton>
 			</div>
 			<div className="description-overview">
@@ -45,7 +45,7 @@ function Overview() {
 					{checked ? (
 						<Chip label="Published" color="success" />
 					) : (
-						<Chip label="Draf" variant="outlined" />
+						<Chip label="Draft" variant="outlined" />
 					)}
 					<Switch checked={checked} onChange={handleSwitchChange} />
 				</div>

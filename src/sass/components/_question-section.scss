@@ -1,3 +1,8 @@
+.container-section{
+	border: solid 2px $mid-grey;
+	padding: 10px 10px;
+}
+
 .question-card {
 	min-width: 250px;
 	width: 300px;
@@ -43,7 +48,7 @@
 	flex-wrap: wrap;
 }
 .reference {
-	padding: 0.5em;
+	padding: 0.8em;
 	margin: 1em 0.5em;
 	max-width: max-content;
 	@include shadow;
